@@ -17,13 +17,14 @@ for i in range(0, n):
 	#print([i, line, y[i]])
 
 print('receive successfully')
-y -= np.mean(y)
+y_no_mean = y
+y = y - np.mean(y)
 frq = np.arange(int(n/2)) * (frequency / 20.0)
 Y = np.fft.fft(y)/n*2
 Y = Y[range(int(n/2))]
 
 fig, ax = plt.subplots(2,1)
-ax[0].plot(x, y)
+ax[0].plot(x, y_no_mean)
 ax[0].set_xlabel('Time')
 ax[0].set_ylabel('Amplitude')
 ax[1].plot(frq[range(40)], abs(Y[range(40)]))
